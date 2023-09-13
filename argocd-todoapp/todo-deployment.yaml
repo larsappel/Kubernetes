@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: todo-webapp
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: todo-webapp
+ template:
+   metadata:
+     labels:
+       app: todo-webapp
+   spec:
+     containers:
+     - name: todo-container
+       image: larsappel/todo:latest
+       ports:
+       - containerPort: 80
+       envFrom: 
+       - configMapRef:
+           name: app-config
