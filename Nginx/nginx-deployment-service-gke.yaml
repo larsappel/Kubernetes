@@ -1,0 +1,12 @@
+apiVersion: v1                     ## The version of the Kubernetes API for services
+kind: Service                      ## The kind of Kubernetes object; a Service
+metadata:                          ## Metadata about the object
+  name: nginx-deployment-service   ## The name of the Service
+spec:                              ## Specification of the desired behavior of this Service
+  selector:                        ## Defines how the Service finds which Pods to route traffic to
+    app: nginx                     ## Selects any Pod with a label having key "app" and value "nginx"
+  ports:                           ## The list of ports on which the Service listens and forwards traffic
+  - protocol: TCP                  ## The network protocol this port listens to
+    port: 80                       ## The port on which the Service is exposed within the cluster
+    targetPort: 80                 ## The port on the Pod to which the traffic is directed
+  type: LoadBalancer               ## Specifies the type of Service; exposes the Service on each node’s IP at a static port

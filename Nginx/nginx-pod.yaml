@@ -1,0 +1,10 @@
+apiVersion: v1          # The version of the Kubernetes API you're using
+kind: Pod               # The kind of Kubernetes object you're creating; a Pod
+metadata:               # Metadata about the object
+  name: nginx-pod       # The name of the Pod; used to identify the Pod in commands and within the cluster
+  labels:               # Key-value pairs attached to the object; used for selection and organization
+    app: nginx          # Label with key "app" and value "nginx"; used by other objects like services to select this Pod
+spec:                   # Specification of the desired behavior of this Pod
+  containers:           # The list of containers that will be started in this Pod
+  - name: nginx         # The name of the container; must be unique within the Pod
+    image: nginx:latest # The container image to use; in this case, the latest version of the nginx image

@@ -1,0 +1,19 @@
+apiVersion: apps/v1         # The version of the Kubernetes API used for ReplicaSets
+kind: ReplicaSet            # The kind of Kubernetes object; a ReplicaSet
+metadata:                   # Metadata about the object
+  name: my-nginx-rs         # The name of the ReplicaSet; used to identify it in commands and within the cluster
+  labels:                   # Key-value pairs attached to the object; used for selection and organization
+    app: nginx              # Label with key "app" and value "nginx"; can be used by other objects to select this ReplicaSet
+spec:                       # Specification of the desired behavior of this ReplicaSet
+  replicas: 2               # The number of pod replicas desired; ensures 2 pods with the specified configuration are always running
+  selector:                 # Defines how the ReplicaSet selects the pods it manages
+    matchLabels:            # Selection based on labels
+      app: nginx            # Selects any Pod with a label having key "app" and value "nginx"
+  template:                 # Template for the pods that will be created; defines how each pod should look
+    metadata:               # Metadata about the pods
+      labels:               # Labels to be added to each pod
+        app: nginx          # Each pod will have this label which will match the selector of the ReplicaSet
+    spec:                   # Specification of the desired behavior of the pods
+      containers:           # The list of containers that will be started in each pod
+      - name: nginx         # Name of the container within the pod; must be unique within the pod
+        image: nginx:latest # The container image to use; in this case, the latest version of nginx

@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: mongo-init-job
+spec:
+ template:
+   spec:
+     containers:
+     - name: mongo-init-container
+       image: larsappel/my-mongo-init:latest
+       env:
+       - name: MONGO_HOST
+         value: mongodb-service
+       - name: MONGO_PORT
+         value: "27017"
+       # If MongoDB requires authentication, add the environment variables here.
+     restartPolicy: OnFailure

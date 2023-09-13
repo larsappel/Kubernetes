@@ -1,0 +1,17 @@
+apiVersion: apps/v1          ## The version of the Kubernetes API for deployments
+kind: Deployment             ## The kind of Kubernetes object; a Deployment
+metadata:                    ## Metadata about the object
+  name: my-nginx-deployment  ## The name of the Deployment; used to identify it
+spec:                        ## Specification of the desired behavior of this Deployment
+  replicas: 2                ## Desired number of pod instances
+  selector:                  ## Label selector for the pods
+    matchLabels:
+      app: nginx
+  template:                  ## The pod template to use
+    metadata:
+      labels:
+        app: nginx           ## Labels for pod selection
+    spec:
+      containers:
+      - name: nginx          ## The name of the container; must be unique within the Pod
+        image: nginx:latest  ## The container image to use
