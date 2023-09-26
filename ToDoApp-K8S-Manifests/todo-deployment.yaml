@@ -14,7 +14,7 @@ spec:
    spec:
      containers:
      - name: todo-container
-       image: ghcr.io/larsappel/todoapp:5b997608a1c67f3481e7ec03024e4c5920d7bf7c
+       image: ghcr.io/larsappel/todoapp:1c51e229e83122c477bdf7ea70aa4f55afda7c26
        ports:
        - containerPort: 80
        envFrom: 
