@@ -6,6 +6,7 @@ on:
       - main
     paths:
     - 'ToDoApp/**'
+  workflow_dispatch:
 
 jobs:
   build:
