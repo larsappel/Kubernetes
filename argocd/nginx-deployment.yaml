@@ -3,7 +3,7 @@ kind: Deployment             ## The kind of Kubernetes object; a Deployment
 metadata:                    ## Metadata about the object
   name: my-nginx-deployment  ## The name of the Deployment; used to identify it
 spec:                        ## Specification of the desired behavior of this Deployment
-  replicas: 2                ## Desired number of pod instances
+  replicas: 4                ## Desired number of pod instances
   selector:                  ## Label selector for the pods
     matchLabels:
       app: nginx
