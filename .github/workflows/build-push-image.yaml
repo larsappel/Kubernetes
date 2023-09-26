@@ -29,8 +29,8 @@ jobs:
     - name: Build and Push Docker image
       run: |
         cd ToDoApp
-        docker build -t larsappel/todoapp:${{ github.sha }} .
-        docker push larsappel/todoapp:${{ github.sha }}
+        docker build -t ghcr.io/larsappel/todoapp:${{ github.sha }} .
+        docker push ghcr.io/larsappel/todoapp:${{ github.sha }}
 
     # Update the Kubernetes manifests to use the new image tag
     - name: Update Kubernetes manifests
