@@ -42,8 +42,7 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "github-actions@github.com"
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/larsappel/Kubernetes.git
         git add ToDoApp-K8S-Manifests/todo-deployment.yaml
         git commit -m "Update webapp image to ${{ github.sha }}"
-        git push
+        git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/larsappel/Kubernetes.git HEAD:main
   
