@@ -1,0 +1,30 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - 'ToDoApp/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GH_TOKEN }}
+
+
+    - name: Build and Push Docker image
+      run: |
+        cd ToDoApp
+        docker build -t ${{ github.actor }}/todoapp:${{ github.sha }} .
+        docker push ${{ github.actor }}/todoapp:${{ github.sha }}
